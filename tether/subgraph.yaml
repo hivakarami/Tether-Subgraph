@@ -3,11 +3,11 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Contract
+    name: TetherToken
     network: mainnet
     source:
       address: "0xdAC17F958D2ee523a2206206994597C13D831ec7"
-      abi: Contract
+      abi: TetherToken
       startBlock: 4634748
     mapping:
       kind: ethereum/events
@@ -25,9 +25,11 @@ dataSources:
         - Transfer
         - Pause
         - Unpause
+        - Token
+        - User
       abis:
-        - name: Contract
-          file: ./abis/Contract.json
+        - name: TetherToken
+          file: ./abis/TetherToken.json
       eventHandlers:
         - event: Issue(uint256)
           handler: handleIssue
@@ -51,4 +53,4 @@ dataSources:
           handler: handlePause
         - event: Unpause()
           handler: handleUnpause
-      file: ./src/contract.ts
+      file: ./src/tether-token.ts
